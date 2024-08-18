@@ -1,0 +1,49 @@
+{
+  "name": "@user3232/mime",
+  "version": "1.0.1",
+  "description": "CLI and library for finding MIME's",
+  "keywords": ["MIME"],
+  "author": "kolodziej.michal %at% gmail.com",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+file:///home/mk/github/tutorials/mime"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./lib/main.d.ts",
+      "import": "./lib/main.js"
+    }
+  },
+  "files": [
+    "lib",
+    "src",
+    "package.json",
+    "README.md"
+  ],
+  "bin": {
+    "mime": "./lib/cli.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+
+  "dependencies": {
+    "@types/command-line-args": "^5.2.3",
+    "@types/command-line-usage": "^5.0.4",
+    "@types/mime-db": "^1.43.5",
+    "@types/node": "^22.4.0",
+    "command-line-args": "^6.0.0",
+    "command-line-usage": "^7.0.3",
+    "mime-db": "^1.53.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.17.0",
+    "typescript": "^5.5.4"
+  },
+  "scripts": {
+    "test": "tsx --test test",
+    "build": "tsc -b"
+  }
+}

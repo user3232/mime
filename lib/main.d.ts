@@ -1,0 +1,16 @@
+import { MimeEntry } from 'mime-db';
+import * as db from './db.js';
+import * as ext from './ext.js';
+export type MimeToInfo = db.MimeToInfo;
+export type Mime = db.Mime;
+export declare const mimeToInfo: db.MimeToInfo;
+export declare function getMimeInfo(string: string | undefined | null): MimeEntry | undefined;
+export declare function listMimesHeavingString(string?: string): db.Mime[] | undefined;
+export declare function firstMimeHeavingString(string?: string): db.Mime | undefined;
+export type ExtToMimeMap = ext.ExtToMimeMap;
+export declare const extToMime: ext.ExtToMimeMap;
+export declare function findMimeForFile(file?: string): db.Mime | undefined;
+export declare function findMimesForFile(file?: string): db.Mime[] | undefined;
+export declare function getMimeHeavingExtension(extension?: string): db.Mime | undefined;
+export declare function listMimesByExtension(extension?: string): db.Mime[] | undefined;
+export declare function mimeToContentEncoding(mime: db.Mime): string;
