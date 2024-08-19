@@ -5,7 +5,7 @@ Work with [MIME database](https://github.com/jshttp/mime-db)!
 ## Install
 
 ```sh
-$ npm i --save-dev @user3232/mime@git+file:///home/mk/github/tutorials/flatten-vite-manifest#semver:latest
+$ npm i --save-dev @user3232/mime@git+file:///home/mk/github/tutorials/mime#semver:latest
 ```
 
 ## CLI
