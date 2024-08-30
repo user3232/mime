@@ -1,6 +1,6 @@
 import commandLineArgs from 'command-line-args'
 import commandLineUsage from 'command-line-usage'
-import { firstMimeHeavingString, listMimesHeavingString } from '../main.js'
+import { firstMimeHeavingString, listMimesHeavingString } from '@user3232/mime/db.js'
 
 
 export function findTextCli(

@@ -1,6 +1,6 @@
 import commandLineArgs from 'command-line-args'
 import commandLineUsage from 'command-line-usage'
-import { findMimeForFile, findMimesForFile } from '../main.js'
+import { findMimeForFile, findMimesForFile } from '@user3232/mime/db.js'
 
 
 export function fileCli(

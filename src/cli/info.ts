@@ -1,6 +1,6 @@
 import commandLineArgs from 'command-line-args'
 import commandLineUsage from 'command-line-usage'
-import { getMimeInfo } from '../main.js'
+import { getMimeInfo } from '@user3232/mime/db.js'
 
 
 export function infoCli(

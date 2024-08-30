@@ -1,8 +1,10 @@
 {
   "name": "@user3232/mime",
-  "version": "1.0.1",
-  "description": "CLI and library for finding MIME's",
-  "keywords": ["MIME"],
+  "version": "1.1.0",
+  "description": "mimemap, API for matching path to mimemap, CLI and API for searching mime-db MIME's",
+  "keywords": [
+    "mime", "mimemap", "cli", "api", "mime-db"
+  ],
   "author": "kolodziej.michal %at% gmail.com",
   "license": "ISC",
   "repository": {
@@ -12,9 +14,22 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./lib/main.d.ts",
-      "import": "./lib/main.js"
-    }
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js"
+    },
+    "./db.js": {
+      "types": "./lib/mime-db/index.d.ts",
+      "import": "./lib/mime-db/index.js"
+    },
+    "./mimemap.js": {
+      "types": "./lib/mimemap/mimemap.d.ts",
+      "import": "./lib/mimemap/mimemap.js"
+    },
+    "./cli.js": {
+      "types": "./lib/cli/index.ts",
+      "import": "./lib/cli/index.js"
+    },
+    "./package.json": "./package.json"
   },
   "files": [
     "lib",
@@ -23,17 +38,17 @@
     "README.md"
   ],
   "bin": {
-    "mime": "./lib/cli.js"
+    "mime": "./lib/run.js"
   },
   "engines": {
     "node": ">=18"
   },
-
   "dependencies": {
     "@types/command-line-args": "^5.2.3",
     "@types/command-line-usage": "^5.0.4",
     "@types/mime-db": "^1.43.5",
     "@types/node": "^22.4.0",
+    "@user3232/tries-and-paths": "git+file:///home/mk/github/tutorials/tries-and-paths#semver:latest",
     "command-line-args": "^6.0.0",
     "command-line-usage": "^7.0.3",
     "mime-db": "^1.53.0"
@@ -43,7 +58,12 @@
     "typescript": "^5.5.4"
   },
   "scripts": {
-    "test": "tsx --test test",
-    "build": "tsc -b"
+    "test": "tsx --test test/*.test.ts",
+    "build-js": "esbuild src/cli/index.ts src/mime-db/index.ts src/mimemap.ts src/run.ts --bundle --outdir=lib --charset=utf8 --platform=node --format=esm --packages=external --analyze",
+    "build-dts": "tsc -p tsconfig.src.json",
+    "build": "npm run build-dts && npm run build-js",
+    "clean": "rm -rf lib",
+    "rebuild": "npm run clean && npm run build",
+    "dist": "npm run rebuild && npm run test"
   }
 }

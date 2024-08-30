@@ -1,6 +1,6 @@
 import commandLineArgs from 'command-line-args'
 import commandLineUsage from 'command-line-usage'
-import { getMimeHeavingExtension, listMimesByExtension } from '../main.js'
+import { getMimeHeavingExtension, listMimesByExtension } from '@user3232/mime/db.js'
 
 
 export function findExtCli(
