@@ -1,6 +1,6 @@
 import assert from 'node:assert'
 import test from 'node:test'
-import { Mimemap, mimemapExample } from '../src/mimemap.js'
+import { Mimemap, mimemapExample } from '@user3232/mime/mimemap.js'
 
 
 test('Mimemap', async (t) => {

@@ -1,6 +1,6 @@
 {
   "name": "@user3232/mime",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "mimemap, API for matching path to mimemap, CLI and API for searching mime-db MIME's",
   "keywords": [
     "mime", "mimemap", "cli", "api", "mime-db"
@@ -9,7 +9,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+file:///home/mk/github/tutorials/mime"
+    "url": "https://github.com/user3232/mime"
   },
   "type": "module",
   "exports": {
@@ -22,8 +22,8 @@
       "import": "./lib/mime-db/index.js"
     },
     "./mimemap.js": {
-      "types": "./lib/mimemap/mimemap.d.ts",
-      "import": "./lib/mimemap/mimemap.js"
+      "types": "./lib/mimemap.d.ts",
+      "import": "./lib/mimemap.js"
     },
     "./cli.js": {
       "types": "./lib/cli/index.ts",
@@ -48,7 +48,7 @@
     "@types/command-line-usage": "^5.0.4",
     "@types/mime-db": "^1.43.5",
     "@types/node": "^22.4.0",
-    "@user3232/tries-and-paths": "git+file:///home/mk/github/tutorials/tries-and-paths#semver:latest",
+    "@user3232/pattern": "github:user3232/pattern#semver:latest",
     "command-line-args": "^6.0.0",
     "command-line-usage": "^7.0.3",
     "mime-db": "^1.53.0"
@@ -59,7 +59,7 @@
   },
   "scripts": {
     "test": "tsx --test test/*.test.ts",
-    "build-js": "esbuild src/cli/index.ts src/mime-db/index.ts src/mimemap.ts src/run.ts --bundle --outdir=lib --charset=utf8 --platform=node --format=esm --packages=external --analyze",
+    "build-js": "esbuild src/cli/index.ts src/mime-db/index.ts src/mimemap.ts src/run.ts src/index.ts --bundle --outdir=lib --charset=utf8 --platform=node --format=esm --packages=external --analyze",
     "build-dts": "tsc -p tsconfig.src.json",
     "build": "npm run build-dts && npm run build-js",
     "clean": "rm -rf lib",

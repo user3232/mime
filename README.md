@@ -1,14 +1,88 @@
 # mime
 
-Work with [MIME database](https://github.com/jshttp/mime-db)!
+API for creating and using mimemap's.
+
+CLI and API for searching/using [MIME database](https://github.com/jshttp/mime-db).
+
 
 ## Install
 
 ```sh
-$ npm i --save-dev @user3232/mime@git+file:///home/mk/github/tutorials/mime#semver:latest
+$ npm i --save-dev user3232/mime#semver:latest
+$ npm i --save-dev @user3232/mime@github:user3232/mime#semver:latest
+$ npm i --save-dev @user3232/mime@git+https://github.com/user3232/mime#semver:latest
 ```
-npm i --save-dev @user3232/mime@git+file:///home/mk/github/tutorials/mime#semver:latest
-## CLI
+
+
+
+## Create and use mimemap
+
+
+```ts
+import { Mimemap, mimemapExample } from '@user3232/mime/mimemap.js'
+
+const mimemap = {
+    name: '@user3232/some-app',
+    version: '1.0.1',
+    mimes: {
+        '.ts': {
+            mime: 'text/typescript' ,
+            charset: 'utf8',
+        },
+        '.js': {
+            mime: 'text/javascript' ,
+            charset: 'utf8',
+        },
+        '.json': {
+            mime: 'application/json' ,
+            charset: 'utf8',
+        },
+        '.html': {
+            mime: 'text/html' ,
+            charset: 'utf8',
+        },
+        '.svg': {
+            mime: 'image/svg+xml',
+            charset: 'utf8',
+        },
+        '.jpeg': {
+            mime: 'image/jpeg'
+        }
+    },
+    scopes: {
+        './dist/': {
+            '.js': {
+                mime: 'application/javascript',
+                charset: 'utf8',
+            },
+            '.ts': {
+                mime: 'application/typescript' ,
+                charset: 'utf8',
+            },
+        }
+    },
+    files: {
+        './manifest/manifest.json': {
+            mime: 'application/manifest+json',
+            charset: 'utf8',
+        }
+    }
+}
+
+const mime = new Mimemap(mimemapExample)
+mime.matchBestTo('./index.ts')?.mime
+// 'text/typescript'
+mime.matchBestTo('./src/index.js')?.mime
+// 'text/javascript'
+mime.matchBestTo('./dist/index.js')?.mime
+// 'application/javascript'
+mime.matchBestTo('./manifest/manifest.json')?.mime
+// 'application/manifest+json'
+
+```
+
+
+## Search mime db CLI
 
 ```sh
 $ npx mime --help
@@ -17,7 +91,7 @@ $ npx mime find-ext js
 $ npx mime find-text json
 ```
 
-## typescript/javascript
+## Search mime db API
 
 
 ```ts
@@ -40,36 +114,4 @@ console.log(mime.getMimeInfo(maybeMime))
 //   compressible: true,
 //   extensions: [ 'html', 'htm', 'shtml' ]
 // }
-```
-
-
-## Development - Git Tagging
-
-https://devconnected.com/how-to-create-git-tags/
-
-```sh
-# anonimous tag for HEAD
-$ git tag v1.0.1
-
-# anotiated tag
-$ git tag v1.0.2 -am "Release 1.0.2"
-
-# list tags
-$ git tag
-v1.0.1
-v1.0.2
-
-# list tags with messages
-$ git tag -n
-v1.0.1
-v1.0.2    Release 1.0.2
-
-# push tags
-$ git push --tags
-
-# annotiated tag for ref:
-# last commit
-$ git tag v.1.0.2-head HEAD -am "tag to actual 15.08.2024"
-# commit before HEAD
-$ git tag v.1.0.2-head HEAD~1 -am "tag to befor changes on 15.08.2024"
 ```

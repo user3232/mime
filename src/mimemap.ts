@@ -1,4 +1,4 @@
-import { Postfixes, PrefixesPostfixes } from '@user3232/tries-and-paths'
+import { Postfixes, PrefixesPostfixes } from '@user3232/pattern'
 import { MIMEType } from 'node:util'
 
 
